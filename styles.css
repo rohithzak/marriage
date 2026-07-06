@@ -90,7 +90,7 @@ body {
     background-image: url('bro.jpeg');
     background-size: cover;
     background-position: center;
-    filter: blur(8px);
+    filter: blur(4px);
     transform: scale(1.1); /* Prevents white blurred edges */
     z-index: 1;
 }
@@ -323,7 +323,7 @@ body {
     background-image: url('venue.jpeg');
     background-size: cover;
     background-position: center;
-    filter: blur(8px);
+    filter: blur(4px);
     transform: scale(1.1); /* Prevents white blurred edges */
     z-index: 1;
 }
