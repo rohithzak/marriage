@@ -1,0 +1,607 @@
+/* ==========================================================================
+   CSS CUSTOM VARIABLES & RESET
+   ========================================================================== */
+:root {
+    /* Emerald & Gold Premium Theme Colors */
+    --bg-emerald-dark: #07170f;
+    --bg-emerald-medium: #0c2518;
+    --bg-emerald-light: #123523;
+    
+    --gold-primary: #d4af37;
+    --gold-light: #f5e4ab;
+    --gold-dark: #aa841c;
+    --gold-glow: rgba(212, 175, 55, 0.35);
+    
+    --text-white: #ffffff;
+    --text-gold-gradient: linear-gradient(135deg, #f5e4ab 0%, #d4af37 50%, #aa841c 100%);
+    --text-muted: #a3bdae;
+    
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-script: 'Alex Brush', cursive;
+    --font-body: 'Montserrat', sans-serif;
+    
+    /* Smooth Transitions */
+    --transition-smooth: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--bg-emerald-dark);
+    color: var(--text-white);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-emerald-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--gold-primary);
+    border-radius: 10px;
+}
+
+/* ==========================================================================
+   LAYOUT SECTIONS
+   ========================================================================== */
+.section {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   SECTION 1: HERO (blur background, save the date)
+   ========================================================================== */
+.hero-section {
+    text-align: center;
+    position: relative;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('bro.jpeg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    transform: scale(1.1); /* Prevents white blurred edges */
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(7, 23, 15, 0.5) 0%,
+        rgba(7, 23, 15, 0.7) 60%,
+        var(--bg-emerald-dark) 100%
+    );
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 600px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ornament {
+    font-size: 1.8rem;
+    color: var(--gold-primary);
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px var(--gold-glow);
+    animation: pulseGlow 3s infinite ease-in-out;
+}
+
+.subtitle {
+    font-family: var(--font-script);
+    font-size: 3rem;
+    color: var(--gold-light);
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.couple-names {
+    font-family: var(--font-heading);
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.first-name, .second-name {
+    letter-spacing: 4px;
+    background: var(--text-gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+}
+
+.connector {
+    font-family: var(--font-script);
+    font-size: 4rem;
+    color: var(--gold-light);
+    font-weight: normal;
+    text-transform: lowercase;
+    margin: -10px 0;
+    -webkit-text-fill-color: var(--gold-light); /* Override gold gradient for handwritten look */
+}
+
+.wedding-date-hero {
+    font-size: 1.1rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--text-white);
+    font-weight: 500;
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 8px 25px;
+    margin-top: 1rem;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-hint {
+    margin-top: 4rem;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.8;
+}
+
+.arrow-down {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold-primary), transparent);
+    position: relative;
+    animation: scrollLine 2s infinite ease-in-out;
+}
+
+/* ==========================================================================
+   SECTION 2: COUNTDOWN TIMER
+   ========================================================================== */
+.countdown-section {
+    background-color: var(--bg-emerald-dark);
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    position: relative;
+}
+
+.decor-top {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold-primary), transparent);
+}
+
+.countdown-container {
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    background: rgba(12, 37, 24, 0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 20px;
+    padding: 40px 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 
+                inset 0 0 15px rgba(212, 175, 55, 0.05);
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    letter-spacing: 2px;
+    color: var(--gold-primary);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.countdown-intro {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    padding: 0 10px;
+    font-weight: 300;
+}
+
+.timer-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 20px 0;
+}
+
+.time-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(7, 23, 15, 0.7);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    border-radius: 12px;
+    width: 75px;
+    padding: 15px 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: var(--transition-smooth);
+}
+
+.time-block:hover {
+    border-color: var(--gold-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--gold-glow);
+}
+
+.time-number {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--gold-primary);
+    text-shadow: 0 0 8px var(--gold-glow);
+}
+
+.time-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.time-colon {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.8rem;
+    color: var(--gold-primary);
+    animation: blink 1.5s infinite;
+    padding-bottom: 25px; /* Alignment adjustment */
+}
+
+
+/* ==========================================================================
+   SECTION 3: VENUE & QR CODE
+   ========================================================================== */
+.venue-section {
+    position: relative;
+    text-align: center;
+}
+
+.venue-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('venue.jpeg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    transform: scale(1.1); /* Prevents white blurred edges */
+    z-index: 1;
+}
+
+.venue-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        var(--bg-emerald-dark) 0%,
+        rgba(7, 23, 15, 0.75) 50%,
+        rgba(4, 12, 8, 0.9) 100%
+    );
+    z-index: 2;
+}
+
+.venue-container {
+    position: relative;
+    z-index: 3;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+.floral-divider {
+    color: var(--gold-primary);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin: 15px 0 35px 0;
+    opacity: 0.7;
+}
+
+.venue-details-card {
+    background: rgba(12, 37, 24, 0.5);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 24px;
+    padding: 45px 30px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.venue-details-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--text-gold-gradient);
+}
+
+.venue-icon {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+}
+
+.venue-details-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--gold-primary);
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.venue-name {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text-white);
+    margin-bottom: 10px;
+}
+
+.venue-info {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* QR Code Container Styling */
+.qr-wrapper {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border: 1.5px solid var(--gold-primary);
+    border-radius: 16px;
+    padding: 12px;
+    background-color: #ffffff; /* Highly critical for scanning QR codes */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 
+                0 0 20px var(--gold-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+}
+
+.qr-wrapper:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
+}
+
+.qr-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+/* QR Code Fallback styling */
+.qr-fallback {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-emerald-light);
+    color: var(--text-white);
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px dashed rgba(212, 175, 55, 0.4);
+}
+
+.qr-fallback-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.qr-fallback-title {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: var(--gold-light);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.qr-fallback-text {
+    font-size: 0.7rem;
+    line-height: 1.3;
+    color: var(--text-muted);
+}
+
+.qr-fallback code {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px 4px;
+    border-radius: 4px;
+    color: var(--gold-primary);
+}
+
+/* Footer style */
+.footer {
+    margin-top: 60px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+/* ==========================================================================
+   ANIMATIONS & SCROLL EFFECT TRANSITIONS
+   ========================================================================== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: revealIn 1s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+.hero-content .subtitle { animation-delay: 0.2s; }
+.hero-content .couple-names { animation-delay: 0.4s; }
+.hero-content .wedding-date-hero { animation-delay: 0.7s; }
+.hero-content .scroll-hint { animation-delay: 1s; }
+
+/* Scroll Trigger Class elements */
+.fade-in-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(0.25, 0.8, 0.25, 1),
+                transform 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.fade-in-on-scroll.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Keyframes */
+@keyframes revealIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+@keyframes scrollLine {
+    0% {
+        height: 0;
+        top: 0;
+        opacity: 0;
+    }
+    30% {
+        height: 30px;
+        top: 0;
+        opacity: 1;
+    }
+    100% {
+        height: 0;
+        top: 40px;
+        opacity: 0;
+    }
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (Mobile responsiveness)
+   ========================================================================== */
+
+/* Medium Devices (Tablets, 768px and up) */
+@media (min-width: 768px) {
+    .couple-names {
+        font-size: 4.8rem;
+    }
+    
+    .connector {
+        font-size: 5.5rem;
+    }
+    
+    .subtitle {
+        font-size: 4rem;
+    }
+
+    .wedding-date-hero {
+        font-size: 1.3rem;
+        letter-spacing: 8px;
+    }
+    
+    .timer-wrapper {
+        gap: 15px;
+    }
+    
+    .time-block {
+        width: 90px;
+        padding: 20px 10px;
+    }
+    
+    .time-number {
+        font-size: 2.2rem;
+    }
+    
+    .time-colon {
+        font-size: 2.2rem;
+    }
+    
+    .venue-details-card {
+        padding: 50px 60px;
+    }
+}
+
+/* Landscape / Small Height Screens */
+@media (max-height: 600px) and (orientation: landscape) {
+    .section {
+        min-height: auto;
+        padding: 60px 20px;
+    }
+    .scroll-hint {
+        display: none;
+    }
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save the Date - Amrutha & Karthik</title>
+    <!-- Elegant Google Fonts: Alex Brush (script for romantic headers), Playfair Display (luxurious serif), Montserrat (modern details) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+    <!-- SECTION 1: HERO SECTION -->
+    <section class="section hero-section">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <div class="ornament">✨</div>
+            <p class="subtitle fade-in">Save the Date</p>
+            <h1 class="couple-names fade-in">
+                <span class="first-name">Amrutha</span>
+                <span class="connector">weds</span>
+                <span class="second-name">Karthik</span>
+            </h1>
+            <p class="wedding-date-hero fade-in">August 23, 2026</p>
+            
+            <div class="scroll-hint fade-in">
+                <span>Scroll to Reveal</span>
+                <div class="arrow-down"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: COUNTDOWN SECTION -->
+    <section class="section countdown-section">
+        <div class="decor-top"></div>
+        <div class="countdown-container fade-in-on-scroll">
+            <h2 class="section-title">The Countdown</h2>
+            <p class="countdown-intro">Counting down the moments until we celebrate our love together</p>
+            
+            <div class="timer-wrapper">
+                <div class="time-block">
+                    <div class="time-number" id="days">00</div>
+                    <div class="time-label">Days</div>
+                </div>
+                <div class="time-colon">:</div>
+                <div class="time-block">
+                    <div class="time-number" id="hours">00</div>
+                    <div class="time-label">Hours</div>
+                </div>
+                <div class="time-colon">:</div>
+                <div class="time-block">
+                    <div class="time-number" id="minutes">00</div>
+                    <div class="time-label">Minutes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: VENUE SECTION -->
+    <section class="section venue-section">
+        <div class="venue-bg"></div>
+        <div class="venue-overlay"></div>
+        <div class="venue-container fade-in-on-scroll">
+            <h2 class="section-title">The Venue</h2>
+            <div class="floral-divider">✦ ━━━━━━━━━ ✦ ━━━━━━━━━ ✦</div>
+            
+            <div class="venue-details-card">
+                <div class="venue-icon">📍</div>
+                <h3>Wedding Ceremony</h3>
+                <p class="venue-name">Join us in celebrating our special day</p>
+                <p class="venue-info">Please scan the QR code below for precise map navigation and directions to the venue.</p>
+                
+                <div class="qr-wrapper">
+                    <!-- Standard image tag looking for qr.png. If not found, it shows an elegant placeholder card -->
+                    <img src="qr.png" alt="Venue QR Code" class="qr-image" onerror="this.style.display='none'; document.getElementById('qr-fallback').style.display='flex';">
+                    
+                    <div id="qr-fallback" class="qr-fallback">
+                        <div class="qr-fallback-icon">🗺️</div>
+                        <p class="qr-fallback-title">QR Scanner Code</p>
+                        <p class="qr-fallback-text">Please upload your QR scanner image file named <code>qr.png</code> to this directory to display it here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <p>Made with Love • Amrutha & Karthik</p>
+        </footer>
+    </section>
+
+</body>
+</html>
